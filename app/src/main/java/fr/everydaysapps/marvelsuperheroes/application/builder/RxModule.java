@@ -13,7 +13,7 @@ import fr.everydaysapps.marvelsuperheroes.utils.rx.RxSchedulers;
 public class RxModule {
 
     @Provides
-    RxSchedulers provideRxSchedulers(){
+    RxSchedulers provideRxSchedulers() {
         return new AppRxSchedulers();
     }
 }

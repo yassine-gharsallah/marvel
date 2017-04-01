@@ -14,13 +14,13 @@ public class AppContextModule {
 
     private final Context context;
 
-    public AppContextModule(Context aContext){
+    public AppContextModule(Context aContext) {
         this.context = aContext;
     }
+
     @AppScope
     @Provides
-    Context provideAppContext()
-    {
+    Context provideAppContext() {
         return context;
     }
 

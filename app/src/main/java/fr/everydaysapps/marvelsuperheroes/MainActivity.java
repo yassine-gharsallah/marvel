@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         text.setOnClickListener(view -> Toast.makeText(MainActivity.this,"ffff", Toast.LENGTH_LONG).show());
 
-     AppComponent contro =   ((AppController) getApplication()).getNetComponent();
+        AppComponent contro =   ((AppController) getApplication()).getNetComponent();
 
         AppComponent contro1 =   ((AppController) getApplication()).getNetComponent();
 

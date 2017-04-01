@@ -11,7 +11,7 @@ import java.util.List;
 public class Heroes {
 
     @Expose
-    private List<Hero> elements ;
+    private List<Hero> elements;
 
     public List<Hero> getElements() {
         return elements;

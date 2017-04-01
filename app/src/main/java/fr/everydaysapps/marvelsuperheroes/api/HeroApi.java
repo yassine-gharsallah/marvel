@@ -15,5 +15,4 @@ public interface HeroApi {
     Observable<Heroes> getHeroes();
 
 
-
 }

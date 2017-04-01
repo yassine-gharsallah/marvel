@@ -13,7 +13,6 @@ import timber.log.Timber;
  */
 
 
-
 public class AppController extends Application {
 
     // il nous faut le context App context
@@ -23,29 +22,21 @@ public class AppController extends Application {
     //                          File cache
 
 
-    private AppComponent appComponent;
+    private static AppComponent appComponent;
 
 
     @Override
     public void onCreate() {
         super.onCreate();
         initialiseLogger();
-
-        appComponent = DaggerAppComponent.builder().appContextModule(new AppContextModule(this)).build();
-
-
-        //appComponent = DaggerAppComponent.builder().a
-        //appComponent = DaggerAppComponent.builder().
-
-
-
-
+        initAppComponent();
 
     }
 
 
-
-
+    private void initAppComponent() {
+        appComponent = DaggerAppComponent.builder().appContextModule(new AppContextModule(this)).build();
+    }
 
 
     private void initialiseLogger() {
@@ -61,7 +52,7 @@ public class AppController extends Application {
         }
     }
 
-   public AppComponent getNetComponent() {
+    public static AppComponent getNetComponent() {
         return appComponent;
     }
 

@@ -22,19 +22,17 @@ public class NetworkModule {
 
     @AppScope
     @Provides
-    OkHttpClient provideHttpClient(HttpLoggingInterceptor logger , Cache cache )
-    {
+    OkHttpClient provideHttpClient(HttpLoggingInterceptor logger, Cache cache) {
 
-        OkHttpClient.Builder  builder = new OkHttpClient().newBuilder();
+        OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
         builder.addInterceptor(logger);
         builder.cache(cache);
-        return   builder.build();
+        return builder.build();
     }
 
     @AppScope
     @Provides
-    HttpLoggingInterceptor provideInterceptor()
-    {
+    HttpLoggingInterceptor provideInterceptor() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return httpLoggingInterceptor;
@@ -48,22 +46,19 @@ public class NetworkModule {
 
     @AppScope
     @Provides
-    File provideCacheFile(Context context)
-    {
-        return  context.getFilesDir();
+    File provideCacheFile(Context context) {
+        return context.getFilesDir();
     }
 
     @AppScope
     @Provides
-    RxJavaCallAdapterFactory provideRxAdapter()
-    {
+    RxJavaCallAdapterFactory provideRxAdapter() {
         return RxJavaCallAdapterFactory.createWithScheduler(AppRxSchedulers.INTERNET_SCHEDULERS);
     }
 
 
     @Provides
-    GsonConverterFactory  provideGsonClient()
-    {
+    GsonConverterFactory provideGsonClient() {
         return GsonConverterFactory.create();
     }
 
