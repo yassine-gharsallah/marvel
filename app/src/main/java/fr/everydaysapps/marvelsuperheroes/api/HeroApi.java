@@ -11,7 +11,7 @@ import rx.Observable;
 
 public interface HeroApi {
 
-    @GET("/test-mobile/iOS/json/test2.json")
+    @GET("test-mobile/iOS/json/test2.json")
     Observable<Heroes> getHeroes();
 
 
