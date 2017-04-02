@@ -6,6 +6,7 @@ import fr.everydaysapps.marvelsuperheroes.utils.UiUtils;
 import fr.everydaysapps.marvelsuperheroes.utils.rx.RxSchedulers;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 /**
  * Created by yassinegharsallah on 01/04/2017.
@@ -14,31 +15,38 @@ import rx.subscriptions.CompositeSubscription;
 public class SplashPresenter {
 
 
-    private SplashModel model;
+    private SplashModel model ;
     private RxSchedulers rxSchedulers;
-    private CompositeSubscription subscriptions;
+    private CompositeSubscription subscriptions ;
 
 
-    public SplashPresenter(SplashModel model, RxSchedulers schedulers, CompositeSubscription subscriptions) {
+    public SplashPresenter(SplashModel model, RxSchedulers schedulers, CompositeSubscription subscriptions)
+    {
         this.model = model;
         this.rxSchedulers = schedulers;
         this.subscriptions = subscriptions;
     }
 
 
-    public void onCreate() {
+
+    public void onCreate()
+    {
         subscriptions.add(getHeroesList());
     }
 
-    public void onDestroy() {
+    public void onDestroy()
+    {
         subscriptions.clear();
     }
 
 
-    private Subscription getHeroesList() {
+
+    private Subscription getHeroesList()
+    {
 
         return model.isNetworkAvailable().doOnNext(networkAvailable -> {
-            if (!networkAvailable) {
+            if (!networkAvailable)
+            {
                 Log.d("no conn", "no connexion");
                 // Show Snackbar can't use app
             }
@@ -48,12 +56,13 @@ public class SplashPresenter {
                 subscribeOn(rxSchedulers.internet()).
                 observeOn(rxSchedulers.androidThread()).subscribe(aBoolean -> {
 
-            model.gotoHeroesListActivity();
-        }, throwable -> {
+                    model.gotoHeroesListActivity();
+                }, throwable -> {
 
             UiUtils.handleThrowable(throwable);
-        });
+                });
     }
+
 
 
 }

@@ -2,11 +2,13 @@ package fr.everydaysapps.marvelsuperheroes.models;
 
 import com.google.gson.annotations.Expose;
 
+import java.io.Serializable;
+
 /**
  * Created by ygharsallah on 30/03/2017.
  */
 
-public class Hero {
+public class Hero  implements Serializable{
 
     @Expose
     private String image;

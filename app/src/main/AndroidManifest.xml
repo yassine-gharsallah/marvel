@@ -20,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+   <activity android:name=".screens.heroes.HeroesListActivity"
+       android:screenOrientation="portrait"
+       />
+
+        <activity android:name=".screens.details.HeroDetailsActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
