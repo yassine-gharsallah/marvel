@@ -13,15 +13,14 @@ import rx.Observable;
 public class SplashModel {
 
 
-    HeroApi api;
-    SplashScreenActivity splashContext;
+    private HeroApi api;
+    private SplashScreenActivity splashContext;
 
     public SplashModel(HeroApi api, SplashScreenActivity splashCtx) {
         this.api = api;
         this.splashContext = splashCtx;
 
     }
-
 
     Observable<Heroes> provideListHeroes() {
         return api.getHeroes();

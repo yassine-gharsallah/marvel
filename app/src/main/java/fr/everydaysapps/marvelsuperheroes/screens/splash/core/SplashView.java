@@ -15,7 +15,6 @@ import fr.everydaysapps.marvelsuperheroes.screens.splash.SplashScreenActivity;
 
 public class SplashView {
 
-
     private View view;
 
     public SplashView(SplashScreenActivity context) {
@@ -24,7 +23,6 @@ public class SplashView {
         view = LayoutInflater.from(context).inflate(R.layout.activity_splash, parent, true);
         ButterKnife.bind(view, context);
     }
-
 
     public View constructView() {
         return view;

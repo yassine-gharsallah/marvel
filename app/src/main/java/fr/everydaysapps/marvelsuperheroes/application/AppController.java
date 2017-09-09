@@ -2,6 +2,8 @@ package fr.everydaysapps.marvelsuperheroes.application;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
+
 import fr.everydaysapps.marvelsuperheroes.application.builder.AppComponent;
 import fr.everydaysapps.marvelsuperheroes.application.builder.AppContextModule;
 import fr.everydaysapps.marvelsuperheroes.application.builder.DaggerAppComponent;
@@ -15,12 +17,6 @@ import timber.log.Timber;
 
 public class AppController extends Application {
 
-    // il nous faut le context App context
-    // retrofit
-    // Okhttpclient                                  GsonFactory               RxApadter
-    //  Logging Interceptor &&  Cache
-    //                          File cache
-
 
     private static AppComponent appComponent;
 
@@ -31,8 +27,12 @@ public class AppController extends Application {
         initialiseLogger();
         initAppComponent();
 
-    }
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
 
+    }
 
     private void initAppComponent() {
         appComponent = DaggerAppComponent.builder().appContextModule(new AppContextModule(this)).build();

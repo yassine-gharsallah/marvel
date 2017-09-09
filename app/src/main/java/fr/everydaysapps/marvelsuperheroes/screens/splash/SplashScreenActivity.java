@@ -31,7 +31,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         DaggerSplashComponent.builder().
                 appComponent(AppController.getNetComponent()).
                 splashContextModule(new SplashContextModule(this)).
@@ -41,7 +40,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         splashPresenter.onCreate();
 
     }
-
 
     @Override
     protected void onDestroy() {
