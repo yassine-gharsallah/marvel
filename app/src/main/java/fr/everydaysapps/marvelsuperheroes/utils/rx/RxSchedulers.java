@@ -1,6 +1,7 @@
 package fr.everydaysapps.marvelsuperheroes.utils.rx;
 
-import rx.Scheduler;
+
+import io.reactivex.Scheduler;
 
 /**
  * Created by ygharsallah on 30/03/2017.

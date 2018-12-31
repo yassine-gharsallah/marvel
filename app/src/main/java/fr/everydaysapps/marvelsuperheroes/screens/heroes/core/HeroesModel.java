@@ -5,7 +5,7 @@ import fr.everydaysapps.marvelsuperheroes.models.Hero;
 import fr.everydaysapps.marvelsuperheroes.models.Heroes;
 import fr.everydaysapps.marvelsuperheroes.screens.heroes.HeroesListActivity;
 import fr.everydaysapps.marvelsuperheroes.utils.NetworkUtils;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by yassinegharsallah on 02/04/2017.
@@ -27,7 +27,7 @@ public class HeroesModel {
     }
 
     Observable<Boolean> isNetworkAvailable() {
-        return NetworkUtils.isNetworkAvailableObservable(context);
+        return NetworkUtils.isNetworkAvailableObservable(context.getActivity());
     }
 
 

@@ -4,7 +4,7 @@ import fr.everydaysapps.marvelsuperheroes.api.HeroApi;
 import fr.everydaysapps.marvelsuperheroes.models.Heroes;
 import fr.everydaysapps.marvelsuperheroes.screens.splash.SplashScreenActivity;
 import fr.everydaysapps.marvelsuperheroes.utils.NetworkUtils;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by yassinegharsallah on 01/04/2017.

@@ -16,7 +16,7 @@ import fr.everydaysapps.marvelsuperheroes.R;
 import fr.everydaysapps.marvelsuperheroes.models.Hero;
 import fr.everydaysapps.marvelsuperheroes.screens.heroes.HeroesListActivity;
 import fr.everydaysapps.marvelsuperheroes.screens.heroes.list.HeroesAdapter;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by yassinegharsallah on 01/04/2017.
@@ -32,21 +32,21 @@ public class HeroesView {
     HeroesAdapter adapter;
 
     public HeroesView(HeroesListActivity context ) {
-        FrameLayout parent = new FrameLayout(context);
+        FrameLayout parent = new FrameLayout(context.getActivity());
         parent.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        view = LayoutInflater.from(context).inflate(R.layout.activity_heroes_list, parent, true);
+        view = LayoutInflater.from(context.getActivity()).inflate(R.layout.activity_heroes_list, parent, true);
         ButterKnife.bind(this, view);
 
         adapter = new HeroesAdapter();
 
         list.setAdapter(adapter);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context.getActivity());
         list.setLayoutManager(mLayoutManager);
 
 
     }
 
-    public Observable<Integer>  itemClicks()
+    public Observable<Integer> itemClicks()
     {
         return adapter.observeClicks();
     }

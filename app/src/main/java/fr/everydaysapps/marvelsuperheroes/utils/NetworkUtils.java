@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 
 /**

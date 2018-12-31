@@ -8,7 +8,7 @@ import fr.everydaysapps.marvelsuperheroes.screens.heroes.core.HeroesModel;
 import fr.everydaysapps.marvelsuperheroes.screens.heroes.core.HeroesPresenter;
 import fr.everydaysapps.marvelsuperheroes.screens.heroes.core.HeroesView;
 import fr.everydaysapps.marvelsuperheroes.utils.rx.RxSchedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by yassinegharsallah on 02/04/2017.
@@ -33,7 +33,7 @@ public class HeroesModule {
     @HeroesScope
     @Provides
     HeroesPresenter providePresenter(RxSchedulers schedulers, HeroesView view, HeroesModel model) {
-        CompositeSubscription subscriptions = new CompositeSubscription();
+        CompositeDisposable subscriptions = new CompositeDisposable();
         return new HeroesPresenter(schedulers, model, view, subscriptions);
     }
 

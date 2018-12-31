@@ -4,7 +4,8 @@ import android.util.Log;
 
 import fr.everydaysapps.marvelsuperheroes.utils.UiUtils;
 import fr.everydaysapps.marvelsuperheroes.utils.rx.RxSchedulers;
-import rx.Subscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
@@ -17,10 +18,10 @@ public class SplashPresenter {
 
     private SplashModel model;
     private RxSchedulers rxSchedulers;
-    private CompositeSubscription subscriptions;
+    private CompositeDisposable subscriptions;
 
 
-    public SplashPresenter(SplashModel model, RxSchedulers schedulers, CompositeSubscription subscriptions) {
+    public SplashPresenter(SplashModel model, RxSchedulers schedulers, CompositeDisposable subscriptions) {
         this.model = model;
         this.rxSchedulers = schedulers;
         this.subscriptions = subscriptions;
@@ -36,7 +37,7 @@ public class SplashPresenter {
     }
 
 
-    private Subscription getHeroesList() {
+    private Disposable getHeroesList() {
 
         return model.isNetworkAvailable().doOnNext(networkAvailable -> {
             if (!networkAvailable) {
