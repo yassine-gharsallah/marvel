@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 import fr.everydaysapps.marvelsuperheroes.R;
 import fr.everydaysapps.marvelsuperheroes.models.Hero;
-import rx.Observable;
-import rx.subjects.PublishSubject;
+import io.reactivex.Observable;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by yassinegharsallah on 01/04/2017.

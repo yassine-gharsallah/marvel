@@ -3,8 +3,14 @@ package fr.everydaysapps.marvelsuperheroes.screens.heroes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.io.Serializable;
 
@@ -22,7 +28,7 @@ import fr.everydaysapps.marvelsuperheroes.screens.heroes.dagger.HeroesModule;
  * Created by yassinegharsallah on 01/04/2017.
  */
 
-public class HeroesListActivity extends AppCompatActivity {
+public class HeroesListActivity extends Fragment {
 
 
     @Inject
@@ -36,20 +42,27 @@ public class HeroesListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         DaggerHereosComponent.builder().appComponent(AppController.getNetComponent()).heroesModule(new HeroesModule(this)).build().inject(this);
-        setContentView(view.view());
+        Toast.makeText(getActivity(), "blah!", Toast.LENGTH_SHORT).show();
+//        getActivity().setContentView(view.view());
         presenter.onCreate();
 
     }
 
+    @Nullable
     @Override
-    protected void onDestroy() {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return view.view();
+    }
+
+    @Override
+    public void onDestroy() {
         super.onDestroy();
         presenter.onDestroy();
     }
 
     public void goToHeroDetailsActivity(Hero hero) {
 
-        Intent in = new Intent(this, HeroDetailsActivity.class);
+        Intent in = new Intent(getActivity(), HeroDetailsActivity.class);
         in.putExtra("hero", (Serializable) hero);
         startActivity(in);
 

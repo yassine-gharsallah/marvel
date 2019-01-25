@@ -8,6 +8,7 @@ import fr.everydaysapps.marvelsuperheroes.screens.splash.core.SplashModel;
 import fr.everydaysapps.marvelsuperheroes.screens.splash.core.SplashPresenter;
 import fr.everydaysapps.marvelsuperheroes.screens.splash.core.SplashView;
 import fr.everydaysapps.marvelsuperheroes.utils.rx.RxSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -22,7 +23,7 @@ public class SplashModule {
     @SplashScope
     @Provides
     SplashPresenter providePresenter(RxSchedulers schedulers, SplashModel model) {
-        CompositeSubscription compositeSubscription = new CompositeSubscription();
+        CompositeDisposable compositeSubscription = new CompositeDisposable();
         return new SplashPresenter(model, schedulers, compositeSubscription);
     }
 

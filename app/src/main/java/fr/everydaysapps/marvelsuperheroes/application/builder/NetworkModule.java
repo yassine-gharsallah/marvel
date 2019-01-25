@@ -2,6 +2,8 @@ package fr.everydaysapps.marvelsuperheroes.application.builder;
 
 import android.content.Context;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import java.io.File;
 
 import dagger.Module;
@@ -52,8 +54,8 @@ public class NetworkModule {
 
     @AppScope
     @Provides
-    RxJavaCallAdapterFactory provideRxAdapter() {
-        return RxJavaCallAdapterFactory.createWithScheduler(AppRxSchedulers.INTERNET_SCHEDULERS);
+    RxJava2CallAdapterFactory provideRxAdapter() {
+        return RxJava2CallAdapterFactory.createWithScheduler(AppRxSchedulers.INTERNET_SCHEDULERS);
     }
 
 

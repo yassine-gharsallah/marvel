@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import fr.everydaysapps.marvelsuperheroes.models.Hero;
 import fr.everydaysapps.marvelsuperheroes.utils.UiUtils;
 import fr.everydaysapps.marvelsuperheroes.utils.rx.RxSchedulers;
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by yassinegharsallah on 02/04/2017.
@@ -19,10 +19,10 @@ public class HeroesPresenter {
     HeroesView view;
     HeroesModel model;
     RxSchedulers rxSchedulers;
-    CompositeSubscription subscriptions;
+    CompositeDisposable subscriptions;
     ArrayList<Hero> heros = new ArrayList<>();
 
-    public HeroesPresenter(RxSchedulers schedulers, HeroesModel model, HeroesView view, CompositeSubscription sub) {
+    public HeroesPresenter(RxSchedulers schedulers, HeroesModel model, HeroesView view, CompositeDisposable sub) {
         this.rxSchedulers = schedulers;
         this.view = view;
         this.model = model;
@@ -41,13 +41,13 @@ public class HeroesPresenter {
     }
 
 
-    private Subscription respondToClick() {
+    private Disposable respondToClick() {
 
         return view.itemClicks().subscribe(integer -> model.gotoHeroDetailsActivity(heros.get(integer)));
     }
 
 
-    private Subscription getHeroesList() {
+    private Disposable getHeroesList() {
 
         return model.isNetworkAvailable().doOnNext(networkAvailable -> {
             if (!networkAvailable) {
